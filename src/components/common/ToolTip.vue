@@ -24,9 +24,9 @@ export default {
           const rect = el.getBoundingClientRect();
           const tooltipRect = tooltip.getBoundingClientRect();
           tooltip.style.top = `${
-            rect.top + window.scrollY - tooltipRect.height - 4
+            rect.top + window.scrollY - tooltipRect.height - 5
           }px`;
-          tooltip.style.left = `${rect.left + rect.width / 2 - 15}px`;
+          tooltip.style.left = `${rect.left + rect.width / 2 - 17}px`;
         });
 
         el.addEventListener("mouseleave", () => {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="heading-title">Enter Verification Code</h3>
-    <p>We have sent a verification code to</p>
+    <p class="v-code-text">We have sent a verification code to</p>
     <p class="email-text">
       {{ user.email }}
       <a class="edit-email edit-pencil" @click="editEmailForm"> EDIT </a>
@@ -40,7 +40,9 @@
       </div>
     </form>
     <div class="mt-2">
-      <div class="float-left" :class="[resendTextEnable]">RESEND CODE</div>
+      <div class="float-left resend-code" :class="[resendTextEnable]">
+        RESEND CODE
+      </div>
       <div class="timing-color float-right">{{ formatedCountdown }}</div>
     </div>
     <div class="clearfix"></div>
@@ -95,7 +97,7 @@ export default defineComponent({
       return moment(this.countdown, "seconds").format("m:ss");
     },
     resendTextEnable() {
-      return this.countdown ? "text-secondary" : "resend-code";
+      return this.countdown ? "disabled" : "";
     },
   },
   methods: {

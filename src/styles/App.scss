@@ -20,6 +20,7 @@ $grid-breakpoints: (
 );
 $primary_color: #024059;
 $error_color: #ff3654;
+$btn_disabled: #707070;
 
 $positions: (static, absolute, relative, fixed, sticky);
 
@@ -143,7 +144,7 @@ input.type-number,
 
   .login-form {
     max-width: 350px;
-    margin: 0 auto;
+    margin: auto;
     width: 100%;
   }
 }
@@ -173,6 +174,9 @@ input.type-number,
 }
 .resend-code:hover {
   color: #198754 !important;
+}
+.resend-code.disabled {
+  color: $btn_disabled;
 }
 .float-left {
   float: left;
@@ -416,6 +420,9 @@ p {
 .edit-pencil {
   background: url(/src/assets/icons/edit-pencil.svg) no-repeat left;
   padding-left: 20px;
+}
+p.v-code-text {
+  margin-bottom: 10px;
 }
 @media (min-width: $breakpoint-lg) {
   .benefit-img img {

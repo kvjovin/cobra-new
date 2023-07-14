@@ -32,6 +32,8 @@
           type="text"
           v-model="user.ssn"
           @input="v$.user.ssn.$touch()"
+          v-maska
+          data-maska="###-##-####"
           id="ssn"
           class="form-control type-number"
           :class="v$.user.ssn.$error ? 'is-invalid' : 'input-text'"
@@ -82,13 +84,15 @@ import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 import ToolTip from "./common/ToolTip.vue";
 import vueRecaptcha from "vue3-recaptcha2";
-import validateSsn from "@/services/validateSsn";
+import validateSsn from "@/utils/validations/validateSsn";
+import { vMaska } from "maska";
 
 export default defineComponent({
   components: {
     ToolTip,
     vueRecaptcha,
   },
+  directives: { maska: vMaska },
   setup() {
     return { v$: useVuelidate() };
   },
