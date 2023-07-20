@@ -1,14 +1,11 @@
-<template>
-  <DefaultHeaderComponent />
-  <router-view />
-</template>
-<script lang="ts">
-import DefaultHeaderComponent from "./components/common/DefaultHeaderComponent.vue";
-import { defineComponent } from "vue";
+<template><DefaultLayout></DefaultLayout></template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import DefaultLayout from "./components/layouts/DefaultLayout.vue";
 export default defineComponent({
   components: {
-    DefaultHeaderComponent,
+    DefaultLayout,
   },
 });
 </script>

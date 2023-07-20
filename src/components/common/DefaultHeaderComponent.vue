@@ -3,7 +3,7 @@
     class="login-header position-static position-lg-absolute text-center py-3 py-lg-0"
   >
     <div class="header-logo">
-      <img src="@/assets/logo.png" alt="Logo" />
+      <img src="@/assets/images/logo.png" alt="Logo" />
     </div>
   </div>
 </template>

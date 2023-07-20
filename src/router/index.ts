@@ -1,12 +1,31 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import LoginView from "../views/LoginView.vue";
-import Loader from "@/components/common/LoaderComponent.vue";
 import { createApp, h } from "vue";
+import GetStartedView from "../views/GetStartedView.vue";
+import OtpValidationView from "../views/OtpValidationView.vue";
+import EditEmailView from "../views/EditEmailView.vue";
+import AgreementView from "../views/AgreementView.vue";
+import Loader from "@/components/common/LoaderComponent.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
-    component: LoginView,
+    name: "get-started",
+    component: GetStartedView,
+  },
+  {
+    path: "/otp-verification",
+    name: "/otp-verification",
+    component: OtpValidationView,
+  },
+  {
+    path: "/edit-email",
+    name: "edit-email",
+    component: EditEmailView,
+  },
+  {
+    path: "/agreement",
+    name: "agreement",
+    component: AgreementView,
   },
 ];
 

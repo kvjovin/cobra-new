@@ -1,4 +1,4 @@
-import { Employee } from "@/models/employee";
+import { Employee } from "@/types/employee";
 import * as api from "@/server/api";
 import apiEndpoints from "@/server/apiRouteConstant";
 
