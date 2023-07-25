@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h3 class="heading-title">Enter Email</h3>
+    <h3 class="heading-title">Enter Email {{ verificationTxt }}</h3>
     <form>
       <div class="form-group mb-3">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label"
+          >Email
+          <ToolTip
+            tooltipText="This is required to proceed with the verification process and to send you a confirmation regarding your elections."
+          />
+        </label>
         <input
           type="email"
           v-model="email"
@@ -23,8 +28,8 @@
               v-if="
                 error.$validator == 'required' || error.$validator == 'email'
               "
-              >Plase enter a valid email address<span class="error-icon"></span
-            ></span>
+              >Plase enter a valid email address</span
+            >
           </div>
         </div>
       </div>
@@ -47,20 +52,30 @@
 import { defineComponent } from "vue";
 import { required, email } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import ToolTip from "@/components/common/ToolTip.vue";
 
 export default defineComponent({
+  name: "EditEmailView",
+  components: {
+    ToolTip,
+  },
   setup() {
     return { v$: useVuelidate() };
   },
   data() {
     return {
       email: "",
+      verificationTxt: "",
     };
   },
   validations() {
     return {
       email: { required, email },
     };
+  },
+  mounted() {
+    this.verificationTxt =
+      this.$route.query.action === "register" ? "For Verification" : "";
   },
   methods: {
     buttonDesign() {

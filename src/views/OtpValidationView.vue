@@ -3,8 +3,10 @@
     <h3 class="heading-title">Enter Verification Code</h3>
     <p class="v-code-text">We have sent a verification code to</p>
     <p class="email-text">
-      {{ user.email }}
-      <a class="edit-email edit-pencil" @click="editEmailForm"> EDIT </a>
+      shasha@dreamorbit.com
+      <router-link class="edit-email edit-pencil" to="/edit-email">
+        EDIT
+      </router-link>
     </p>
     <form>
       <div class="form-group mb-3">
@@ -23,8 +25,7 @@
             v-if="v$.otpcode.required"
           >
             Please enter a valid verification code
-            <span class="error-icon"></span
-          ></span>
+          </span>
         </div>
       </div>
       <div class="form-group mt-4">
@@ -56,6 +57,7 @@ import { useVuelidate } from "@vuelidate/core";
 import moment from "moment";
 
 export default defineComponent({
+  name: "OtpValidationView",
   setup() {
     return { v$: useVuelidate() };
   },
@@ -67,13 +69,6 @@ export default defineComponent({
   },
   data() {
     return {
-      user: {
-        name: this.formData.name,
-        email: this.formData.email,
-        ssn: this.formData.ssno,
-        zipcode: this.formData.zip,
-        dob: this.formData.dob,
-      },
       otpcode: "",
       submitted: false,
       countdown: 59,
@@ -114,10 +109,10 @@ export default defineComponent({
     async submitOtp(): Promise<void> {
       this.submitted = true;
       this.v$.$touch();
+      this.$router.push("/agreement");
       // this.$emit("otpValueSubmit", this.formData);
     },
     async editEmailForm(): Promise<void> {
-      console.log("editEmailForm");
       this.$emit("editEmailId");
     },
   },

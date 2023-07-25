@@ -21,6 +21,5 @@ export default defineComponent({
   transform: -webkit-translate(-50%, -50%);
   transform: -moz-translate(-50%, -50%);
   transform: -ms-translate(-50%, -50%);
-  color: darkred;
 }
 </style>

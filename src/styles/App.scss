@@ -1,15 +1,10 @@
-$primary-color: #ffffff;
-$primary-text-color: #6c757d;
-$border-radius: 2.5px;
-$bg_path: url("assets/login-bg.png");
-$primary: #5d9143;
-$btn-txt-color: #ffffff;
+$border-radius: 0.1563rem;
 
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-xxl: 1400px;
+$breakpoint-sm: 36rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 62rem;
+$breakpoint-xl: 75rem;
+$breakpoint-xxl: 87.5rem;
 
 $grid-breakpoints: (
   sm: $breakpoint-sm,
@@ -18,16 +13,15 @@ $grid-breakpoints: (
   xl: $breakpoint-xl,
   xxl: $breakpoint-xxl,
 );
-$primary_color: #024059;
-$error_color: #ff3654;
-$btn_disabled: #707070;
-
 $positions: (static, absolute, relative, fixed, sticky);
 
+@import "/src/styles/color";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url("https://use.typekit.net/wyu3dug.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import "/src/styles/alert";
+
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -39,13 +33,17 @@ $positions: (static, absolute, relative, fixed, sticky);
     }
   }
 }
+:root {
+  font-size: 16px;
+  --btn-disabled: #707070;
+}
 html,
 body,
 #app {
   height: 100%;
 }
 body {
-  color: #3d484d;
+  color: $the-default;
 }
 h1,
 h2,
@@ -53,7 +51,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $primary_color;
+  color: $primary-blue;
 }
 body {
   font-family: "freight-sans-pro", sans-serif;
@@ -77,7 +75,7 @@ button,
   font-family: "freight-sans-pro", sans-serif;
   font-weight: 600;
   font-style: normal;
-  /* font: "normal normal 600 16px/20px FreightSans Pro"; */
+  /* font: "normal normal 600 1rem/1.25rem FreightSans Pro"; */
 }
 
 h1,
@@ -96,87 +94,50 @@ input.type-number,
   font-family: "Roboto";
 }
 
-.container {
-  margin: 0 auto;
-
-  h3 {
-    color: $primary-text-color;
-  }
-
-  .page-title {
-    font-size: 30px;
-  }
-}
-
-.input-errors {
-  font-size: 10px;
-  margin-top: 5px;
-  color: $error_color;
-  font-weight: 500;
-}
-
-.form-control.is-invalid {
-  color: $error_color;
-}
-
 .form-control {
-  font-size: 14px;
-  padding: 10px 15px;
-}
-.half-bg {
-  background-image: $bg_path;
-  background-size: 50%;
-  background-repeat: repeat-y;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  font-size: 0.875rem;
+  padding: 0.625rem 0.9375rem;
 }
 .login-section {
   width: 100%;
-  margin-top: 15px;
-  height: calc(100% - 120px);
+  margin-top: 0.9375rem;
+  height: calc(100% - 7.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .login-form {
-    max-width: 350px;
+    max-width: 22.75rem;
     margin: auto;
     width: 100%;
   }
 }
-.error-icon {
-  padding-right: 20px;
-  background: url(/src/assets/icons/error-ques.svg) no-repeat 9px center;
-}
 .vuejs3-datepicker .vuejs3-datepicker__value {
   border: 0;
   flex-direction: row-reverse;
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   justify-content: space-between;
   width: 100%;
 }
 
 .vuejs3-datepicker .vuejs3-datepicker__content {
-  font-size: 14px;
+  font-size: 0.875rem;
   margin-left: 0;
 }
 .resend-code {
   text-decoration: underline;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: $primary;
   font-weight: 600;
-  letter-spacing: 0.14px;
-  cursor: default;
+  letter-spacing: 0.0088rem;
+  cursor: pointer;
 }
-.resend-code:hover {
-  color: #198754 !important;
+.resend-code:not(.disabled):hover {
+  color: $primary !important;
 }
 .resend-code.disabled {
-  color: $btn_disabled;
+  color: var(--btn-disabled);
+  cursor: default;
 }
 .float-left {
   float: left;
@@ -185,93 +146,69 @@ input.type-number,
   float: right;
 }
 .timing-color {
-  color: $primary_color;
+  color: $primary-blue;
   font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 0.85px;
+  font-size: 0.9375rem;
+  letter-spacing: 0.0531rem;
 }
 .edit-email {
   text-decoration: underline;
   font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.14px;
+  font-size: 1rem;
+  letter-spacing: 0.0088rem;
   color: $primary;
   text-transform: uppercase;
   cursor: pointer;
 }
-.fonttext-color {
-  text-align: left;
-  font: normal normal 600 16px/24px FreightSans Pro;
-  letter-spacing: 0.85px;
-  color: #024059;
-  opacity: 1;
-}
-.button-successcolor {
-  background: var(--unnamed-color-5d9143) 0% 0% no-repeat padding-box;
-  background: #5d9143 0% 0% no-repeat padding-box;
-  opacity: 1;
-}
-.button-successcolor:hover {
-  background: var(--unnamed-color-5d9143) 0% 0% no-repeat padding-box;
-  background: #5d9143 0% 0% no-repeat padding-box;
-  opacity: 1;
-  color: #ffffff;
-}
 .btn-primary,
 .btn-primary:hover,
 .btn.btn-primary:active {
-  color: $btn-txt-color;
+  color: $white;
+}
+.btn:disabled {
+  color: $white;
+  --bs-btn-disabled-border-color: var(--btn-disabled);
+  --bs-btn-disabled-bg: var(--btn-disabled);
 }
 .btn-secondary {
-  --bs-btn-disabled-bg: #707070;
+  --bs-btn-bg: var(--btn-disabled);
 }
 .heading-title {
-  font-size: 30px;
-  color: $primary-color;
-  margin-bottom: 20px;
+  font-size: 1.875rem;
+  color: $primary-blue;
+  margin-bottom: 1.25rem;
 }
 label.form-label {
-  font-size: 14px;
-  color: #3d484d;
+  font-size: 0.875rem;
+  color: $the-default;
 }
 p {
-  font-size: 16px;
+  font-size: 1rem;
 }
 .btn {
-  font-size: 16px;
-  height: 41px;
-  letter-spacing: 0.85px;
+  font-size: 1rem;
+  height: 2.5625rem;
+  letter-spacing: 0.0531rem;
 }
 .form-control {
-  color: $primary_color;
+  color: $primary-blue;
 }
 .form-control:focus {
-  border: 1px solid #1b97bf;
+  border: 0.0625rem solid #1b97bf;
   box-shadow: none;
-}
-.form-control.is-invalid {
-  color: $error_color;
-  border: 1px solid $error_color;
-  background-image: url(/src/assets/icons/error-tri.svg);
-  background-position: right 12px center;
-  background-size: 13px;
-}
-.form-control.is-invalid:focus {
-  box-shadow: none;
-  border: 1px solid $error_color;
 }
 .vuejs3-datepicker {
   .vuejs3-datepicker__typeablecalendar {
     background-image: url("/src/assets/icons/cal-date.svg");
     left: auto;
-    top: 12px;
-    right: 12px;
-    width: 18px;
-    height: 18px;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 1.125rem;
+    height: 1.125rem;
   }
   .vuejs3-datepicker__inputvalue {
-    border: 1px solid #dee2e6;
-    padding: 10px 15px;
+    border: 0.0625rem solid #dee2e6;
+    padding: 0.625rem 0.9375rem;
     border-radius: $border-radius;
   }
   .vuejs3-datepicker__typeablecalendar svg {
@@ -280,17 +217,17 @@ p {
 }
 
 .login-header {
-  top: 25px;
-  right: 25px;
+  top: 1.5625rem;
+  right: 1.5625rem;
 }
 .footer-row {
   display: flex;
-  margin-top: 30px;
+  margin-top: 1.875rem;
   align-self: center;
 
   .footer-links {
-    margin-right: 20px;
-    margin-bottom: 35px;
+    margin-right: 1.25rem;
+    margin-bottom: 2.1875rem;
 
     ul {
       display: flex;
@@ -300,8 +237,8 @@ p {
       li {
         a {
           text-decoration: none;
-          color: $primary_color;
-          line-height: 15px;
+          color: $primary-blue;
+          line-height: 0.9375rem;
           display: block;
           a:hover {
             text-decoration: underline;
@@ -309,70 +246,76 @@ p {
         }
       }
       li:not(:last-child) {
-        margin-right: 10px;
-        border-right: 1px solid $primary_color;
-        padding-right: 10px;
+        margin-right: 0.625rem;
+        border-right: 0.0625rem solid $primary-blue;
+        padding-right: 0.625rem;
       }
     }
   }
 }
 .email-text {
   font-weight: 600;
-  letter-spacing: 0.85px;
-  color: $primary_color;
+  letter-spacing: 0.0531rem;
+  color: $primary-blue;
 }
 
 .container-fluid.login-page {
-  min-height: calc(100% - 200px);
+  min-height: calc(100% - 12.5rem);
 }
 .Toastify__toast-container {
   .Toastify__toast {
     font-family: "freight-sans-pro", sans-serif;
     font-weight: 500;
     font-style: normal;
-    color: $primary_color;
-    background: linear-gradient(to right, #4caf50 15px, #fff 15px);
-    padding-left: 22px;
-    border-radius: 6px;
+    color: $primary-blue;
+    background: linear-gradient(to right, #4caf50 0.9375rem, $white 0.9375rem);
+    padding-left: 1.375rem;
+    border-radius: 0.375rem;
 
     button.Toastify__close-button {
-      margin-top: 10px;
+      margin-top: 0.625rem;
     }
     .Toastify__toast-icon {
-      width: 26px;
-      height: 26px;
+      width: 1.625rem;
+      height: 1.625rem;
     }
   }
 }
 .benefit-img {
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 2.1875rem;
+  padding-bottom: 2.1875rem;
   text-align: center;
   position: relative;
 
   .background-gradient {
     background: transparent
-      linear-gradient(204deg, $primary 0%, #0091bf 52%, $primary_color 100%) 0%
+      linear-gradient(204deg, $primary 0%, #0091bf 52%, $primary-blue 100%) 0%
       0% no-repeat padding-box;
-    width: calc(50% + 15px);
+    width: calc(50% + 0.9375rem);
     position: absolute;
     z-index: -1;
-    left: -15px;
+    left: -0.9375rem;
     top: 0;
     min-height: 100%;
   }
   .benefits-section {
-    max-width: 500px;
+    max-width: 35rem;
     text-align: center;
     margin: 0 auto;
     position: absolute;
-    bottom: 45px;
+    bottom: 2.8125rem;
     left: 0;
     right: 0;
     z-index: 1;
 
     .benefit-title {
-      font-size: 46px;
+      font-size: 1.625rem;
+    }
+
+    p {
+      max-width: 32.25rem;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 
@@ -380,12 +323,12 @@ p {
     background: transparent linear-gradient(177deg, #00000000 50%, #000000 100%)
       0% 0% no-repeat padding-box;
     width: 100%;
-    max-width: 609px;
+    max-width: 38.0625rem;
     left: 0;
-    height: calc(100% - 35px);
+    height: calc(100% - 2.1875rem);
     position: absolute;
     right: 0;
-    bottom: 35px;
+    bottom: 2.1875rem;
     margin: 0 auto;
     z-index: 0;
   }
@@ -394,35 +337,12 @@ p {
     width: 100%;
   }
 }
-.tooltip {
-  opacity: 1;
-  z-index: 100;
-  position: absolute;
-  padding: 5px 10px;
-  background-color: #00678d;
-  color: #fff;
-  font-size: 12px;
-  max-width: 200px;
-  border-radius: $border-radius;
-}
-.tooltip:after {
-  position: absolute;
-  top: 100%;
-  left: 10px;
-  margin: 0 auto;
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #00678d;
-}
 .edit-pencil {
   background: url(/src/assets/icons/edit-pencil.svg) no-repeat left;
-  padding-left: 20px;
+  padding-left: 1.25rem;
 }
 p.v-code-text {
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 @media (min-width: $breakpoint-lg) {
   .benefit-img img {
@@ -430,7 +350,7 @@ p.v-code-text {
     max-width: 100%;
   }
   .login-section {
-    margin-top: 120px;
+    margin-top: 7.5rem;
   }
   .footer-row {
     align-self: flex-end;

@@ -17,8 +17,8 @@
             :class="{ 'is-invalid': v$.user.name.$error }"
             v-if="v$.user.name.required"
           >
-            Please enter your name <span class="error-icon"></span
-          ></span>
+            Please enter your name
+          </span>
         </div>
       </div>
       <div class="form-group mb-3">
@@ -37,7 +37,7 @@
             :class="{ 'is-invalid': v$.user.ssn.$error }"
             v-if="v$.user.ssn.required"
           >
-            Please enter a valid SSN <span class="error-icon"></span>
+            Please enter a valid SSN
           </span>
         </div>
       </div>
@@ -55,8 +55,8 @@
             :class="{ 'is-invalid': v$.user.address.$error }"
             v-if="v$.user.address.required"
           >
-            Please enter your address <span class="error-icon"></span
-          ></span>
+            Please enter your address
+          </span>
         </div>
       </div>
       <div class="form-group mb-3">
@@ -73,8 +73,8 @@
             :class="{ 'is-invalid': v$.user.zip.$error }"
             v-if="v$.user.zip.required"
           >
-            Please enter a valid zip code <span class="error-icon"></span
-          ></span>
+            Please enter a valid zip code
+          </span>
         </div>
       </div>
       <div class="form-group mb-3">
