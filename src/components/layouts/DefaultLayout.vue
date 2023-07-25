@@ -11,14 +11,13 @@
             <div class="background-gradient"></div>
             <img src="../../assets/images/welcome-image.png" alt="Benefits" />
             <div class="benefits-section p-3 p-md-0">
-              <h1 class="benefit-title text-white mb-3">Benefits</h1>
+              <h1 class="benefit-title text-white mb-3">
+                Welcome to P&A Group’s COBRA Enrollment Portal
+              </h1>
               <p class="text-white">
-                The COBRA Enrollment Portal project aims to provide employees
-                with a user-friendly web portal that enables them to self-enroll
-                in COBRA benefits. The portal encompasses a comprehensive
-                workflow designed to guide individuals through the enrollment
-                process and allows them to select from the benefits offered by
-                their former employer.
+                Here you can view your benefit options and enroll in available
+                coverage for you and your family. Log in now to select your
+                COBRA election(s) and make your initial payment(s).
               </p>
             </div>
             <div class="black-gradient"></div>

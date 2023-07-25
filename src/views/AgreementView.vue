@@ -139,7 +139,6 @@ export default defineComponent({
     },
     openModal() {
       this.showModal = true;
-      console.log(this.showModal);
     },
     closeModal() {
       this.showModal = false;
@@ -152,102 +151,108 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
+@import "/src/styles/color";
+
 .agreement-wrapper {
-  padding-bottom: 71px;
+  padding-bottom: 4.4375rem;
 
   .agreement-header {
     background: transparent
-      linear-gradient(281deg, #5d9143 0%, #0091bf 52%, #024059 100%) 0% 0%
-      no-repeat padding-box;
-    padding: 22px 40px;
+      linear-gradient(281deg, $primary 0%, #0091bf 52%, $primary-txt-color 100%)
+      0% 0% no-repeat padding-box;
+    padding: 1.375rem 2.5rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     .agreement-title {
-      font-size: 30px;
-      color: #fff;
+      font-size: 1.875rem;
+      color: $btn-txt-color;
       font-weight: 700;
       text-align: center;
     }
     .print-btn {
-      color: #fff;
+      color: $btn-txt-color;
       font-weight: 600;
       text-transform: uppercase;
-      font-size: 18px;
+      font-size: 1.125rem;
       align-self: center;
-      background: url(../assets/icons/print.svg) no-repeat left -1px;
-      padding-left: 32px;
+      background: url(../assets/icons/print.svg) no-repeat left -0.0625rem;
+      padding-left: 2rem;
       cursor: pointer;
     }
   }
   .agreement-body {
-    max-width: 1100px;
+    max-width: 68.75rem;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1.25rem;
 
     .agreement-point {
       font-family: Roboto;
       font-weight: 700;
-      font-size: 16px;
-      letter-spacing: 0.14px;
-      margin-bottom: 7px;
-      color: #363636;
+      font-size: 1rem;
+      letter-spacing: 0.0088rem;
+      margin-bottom: 0.4375rem;
+      color: $agr-color;
     }
 
     .agreement-content {
-      color: #363636;
+      color: $agr-color;
       font-weight: 500;
-      font-size: 16px;
-      line-height: 35px;
-      margin-bottom: 10px;
+      font-size: 1rem;
+      line-height: 2.1875rem;
+      margin-bottom: 0.625rem;
     }
   }
   .agreement-footer {
-    box-shadow: 0px -2px 6px #00000029;
+    box-shadow: 0rem -0.125rem 0.375rem #00000029;
     position: fixed;
     bottom: 0;
-    background: #fff;
+    background: $btn-txt-color;
     width: 100%;
 
     .agreement-footer-container {
       display: flex;
       justify-content: space-between;
-      max-width: 1100px;
+      max-width: 68.75rem;
       margin: auto;
-      padding: 15px;
+      padding: 0.9375rem;
       flex-direction: column;
 
       .form-check.agreement-check {
         align-self: center;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
 
         #agreementCheck {
           --bs-border-color: #b5b5b5;
-          --bs-border-width: 2px;
+          --bs-border-width: 0.125rem;
         }
         .form-check-input:checked {
-          background-color: #03658c;
-          border-color: #03658c;
+          background-color: $check-color;
+          border-color: $check-color;
         }
 
         label.agreement-label {
           font-weight: 600;
-          color: #3d484d;
+          color: $the-default-color;
         }
       }
 
       .agreement-btns {
         text-align: center;
+
         .btn {
-          width: 175px;
-          border: 1px solid #5d9143;
+          width: 10.9375rem;
+        }
+
+        .btn:not(.btn-secondary) {
+          border: 0.0625rem solid $primary;
         }
       }
     }
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .agreement-wrapper {
     .agreement-header {
       flex-direction: row;
@@ -258,15 +263,15 @@ export default defineComponent({
     }
 
     .agreement-body {
-      padding: 20px 40px;
+      padding: 1.25rem 2.5rem;
     }
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 62rem) {
   .agreement-wrapper {
     .agreement-body {
-      padding: 20px 10px;
+      padding: 1.25rem 0.625rem;
     }
     .agreement-footer .agreement-footer-container {
       flex-direction: row;

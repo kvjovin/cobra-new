@@ -9,7 +9,7 @@
         <label for="registrationCode" class="form-label"
           >Registratin Code
           <ToolTip
-            tooltipText="This field is required if you are registered in COBRA health insurance."
+            tooltipText="To access your registration code, please refer to your P&A Group Qualifying Event COBRA Notice.  The registration code is located on the top of page one."
         /></label>
         <input
           type="text"
@@ -32,14 +32,14 @@
         <label for="ssn" class="form-label"
           >SSN
           <ToolTip
-            tooltipText="This SSN field is required to login to your account."
+            tooltipText="Enter your full SSN.  If your previous employer uses an alternative identifier, please refer to your Qualifying Event Notice for your alternative identifier."
         /></label>
         <input
           type="text"
           v-model="user.ssn"
           @input="v$.user.ssn.$touch()"
           v-maska
-          data-maska="###-##-####"
+          data-maska="*##-##-####"
           id="ssn"
           class="form-control type-number"
           :class="v$.user.ssn.$error ? 'is-invalid' : 'input-text'"
@@ -73,8 +73,9 @@
       </div>
       <div class="form-group mt-4">
         <button
-          :disabled="v$.user.$invalid"
+          :disabled="v$.user.$invalid || isSubmitDisabled"
           class="btn w-100"
+          id="button-continue"
           type="button"
           :class="[buttonDesign()]"
           @click="userDataSubmit"
@@ -90,10 +91,17 @@
 import { defineComponent, ref } from "vue";
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import ToolTip from "../components/common/ToolTip.vue";
+import ToolTip from "@/components/common/ToolTip.vue";
 import vueRecaptcha from "vue3-recaptcha2";
 import validateSsn from "@/utils/validations/validateSsn";
 import { vMaska } from "maska";
+import AuthService from "@/services/authService";
+
+interface UserData {
+  registrationCode: string;
+  ssn: string;
+  gRecaptcha: string;
+}
 
 export default defineComponent({
   name: "GetStartedView",
@@ -111,15 +119,15 @@ export default defineComponent({
         registrationCode: "",
         ssn: "",
         gRecaptcha: "",
-      },
+      } as UserData,
       submitted: false,
       showRecaptcha: true,
       loadingTimeout: 30000,
-      isFormInvalid: true,
+      isFormInvalid: false,
       validationMsg: "Invalid registration code or SSN. Please try again",
+      isSubmitDisabled: false,
     };
   },
-
   validations() {
     return {
       user: {
@@ -130,7 +138,7 @@ export default defineComponent({
     };
   },
   methods: {
-    buttonDesign() {
+    buttonDesign(): string {
       const buttonStatus = this.v$.user.$invalid;
       return buttonStatus == true ? "btn-secondary" : "btn-primary";
     },
@@ -140,23 +148,44 @@ export default defineComponent({
       if (this.v$.$invalid) {
         return;
       }
-      this.$router.push("/otp-verification");
+      const params = {
+        registrationCode: this.user.registrationCode,
+        ssn: this.user.ssn.replace(/-/g, ""),
+      };
+      this.isSubmitDisabled = true;
+      const result = await AuthService.login(params);
+      this.isSubmitDisabled = false;
+      if (result === undefined) {
+        this.isFormInvalid = true;
+        return;
+      }
+      if (result.data.response) {
+        this.isFormInvalid = false;
+        this.$router.push("/otp-verification");
+      } else if (result.data.error) {
+        this.isFormInvalid = true;
+      } else {
+        this.$router.push({
+          path: "/edit-email",
+          query: { action: "register" },
+        });
+      }
     },
-    recaptchaVerified(response: any) {
+    recaptchaVerified(response: string): void {
       if (response) {
         this.user.gRecaptcha = response;
       }
     },
-    recaptchaExpired() {
+    recaptchaExpired(): void {
       if (vueRecaptcha.value) {
         vueRecaptcha.value.reset();
       }
       this.user.gRecaptcha = "";
     },
-    recaptchaFailed() {
+    recaptchaFailed(): void {
       this.user.gRecaptcha = "";
     },
-    recaptchaError(reason: any) {
+    recaptchaError(reason: any): void {
       this.user.gRecaptcha = "";
     },
   },
@@ -164,32 +193,32 @@ export default defineComponent({
 </script>
 <style scoped>
 .google-recaptcha {
-  width: 230px;
-  height: 70px;
+  width: 14.375rem;
+  height: 4.375rem;
   overflow: hidden;
-  top: -1px;
-  left: -1px;
+  top: -0.0625rem;
+  left: -0.0625rem;
   position: relative;
 }
 
 .captcha-container {
-  -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
-  -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.08);
-  border: 1px solid #d3d3d3;
+  -webkit-box-shadow: 0 0 0.25rem 0.0625rem rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 0 0.25rem 0.0625rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0.25rem 0.0625rem rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 0 0.25rem 0.0625rem rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 0 0.25rem 0.0625rem rgba(0, 0, 0, 0.08);
+  border: 0.0625rem solid #d3d3d3;
   background: #f9f9f9;
-  border-radius: 3px;
+  border-radius: 0.1875rem;
   overflow: hidden;
   display: flex;
   justify-content: space-between;
 }
 .captcha-container::after {
   content: "";
-  width: 70px;
-  height: 70px;
-  background: url(/src/assets/images/recaptcha.png) no-repeat right 10px center /
-    contain;
+  width: 4.375rem;
+  height: 4.375rem;
+  background: url(/src/assets/images/recaptcha.png) no-repeat right 0.625rem
+    center / contain;
 }
 </style>

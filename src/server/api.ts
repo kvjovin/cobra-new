@@ -50,9 +50,9 @@ export async function get<T>(url: string): Promise<ApiResponse<T>> {
   }
 }
 
-export async function store<T>(url: string, data: T): Promise<void> {
+export async function post<T>(url: string, data: any): Promise<void> {
   try {
-    await apiClient.post(url, data);
+    return await apiClient.post(url, data);
   } catch (error) {
     console.error("Failed to create data:", error);
     throw error;

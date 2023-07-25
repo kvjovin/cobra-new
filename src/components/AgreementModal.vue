@@ -37,7 +37,8 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   props: {
     visible: {
       type: Boolean,
@@ -53,30 +54,32 @@ export default {
       this.closeModal();
     },
   },
-};
+});
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "/src/styles/color";
+
 .modal {
   background-color: rgba(0, 0, 0, 0.7);
   .modal-dialog {
-    --bs-modal-width: 457px;
+    --bs-modal-width: 28.5625rem;
 
     .modal-content {
-      padding: 18px 20px;
+      padding: 1.125rem 1.25rem;
 
       .agreement-img {
         margin: 0 auto;
 
         img {
-          max-width: 175px;
+          max-width: 10.9375rem;
         }
       }
 
       .btn-close {
         --bs-btn-close-bg: url(../assets/icons/close-modal.svg);
         --bs-btn-close-opacity: 1;
-        background-size: 25px;
+        background-size: 1.5625rem;
         background-size: contain;
         margin-right: 0;
         margin-left: auto;
@@ -84,18 +87,18 @@ export default {
 
       .modal-header {
         --bs-modal-header-border-width: 0;
-        --bs-modal-header-padding: 20px 0px 10px;
+        --bs-modal-header-padding: 1.25rem 0rem 0.625rem;
 
         .modal-title {
           color: #024059;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: 600;
           margin: auto;
         }
       }
 
       .modal-body {
-        --bs-modal-padding: 0px 21px;
+        --bs-modal-padding: 0rem 1.3125rem;
         font-weight: 500;
         text-align: center;
       }
@@ -103,23 +106,23 @@ export default {
       .modal-footer {
         --bs-modal-footer-border-width: 0;
         justify-content: center;
-        padding: 25px 0px;
+        padding: 1.5625rem 0rem;
 
         .btn {
-          width: 175px;
-          border: 1px solid #5d9143;
+          width: 10.9375rem;
+          border: 0.0625rem solid $primary;
         }
       }
     }
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 36rem) {
   .modal .modal-dialog .modal-content .modal-header {
-    --bs-modal-header-padding: 20px 10px 10px;
+    --bs-modal-header-padding: 1.25rem 0.625rem 0.625rem;
   }
   .modal .modal-dialog .modal-content .modal-footer {
-    padding: 25px 10px;
+    padding: 1.5625rem 0.625rem;
   }
 }
 </style>
