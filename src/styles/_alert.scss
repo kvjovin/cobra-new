@@ -1,27 +1,27 @@
 .input-errors {
   font-size: 0.625rem;
   margin-top: 0.3125rem;
-  color: $the-error-color;
+  color: $the-error;
   font-weight: 500;
 }
 
 .form-control.is-invalid {
-  color: $the-error-color;
+  color: $the-error;
 }
 .error-icon {
   padding-right: 1.25rem;
   background: url(/src/assets/icons/error-ques.svg) no-repeat 0.5625rem center;
 }
 .form-control.is-invalid {
-  color: $the-error-color;
-  border: 0.0625rem solid $the-error-color;
+  color: $the-error;
+  border: 0.0625rem solid $the-error;
   background-image: url(/src/assets/icons/error-tri.svg);
   background-position: right 0.75rem center;
   background-size: 0.8125rem;
 }
 .form-control.is-invalid:focus {
   box-shadow: none;
-  border: 0.0625rem solid $the-error-color;
+  border: 0.0625rem solid $the-error;
 }
 .alert {
   --bas-alert-padding-x: 0.75rem;

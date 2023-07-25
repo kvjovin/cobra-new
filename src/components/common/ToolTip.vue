@@ -42,8 +42,9 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "/src/styles/color";
+
 $border-radius: 0.1563rem;
 
 .tooltip {
@@ -51,8 +52,8 @@ $border-radius: 0.1563rem;
   z-index: 100;
   position: absolute;
   padding: 0.3125rem 0.625rem;
-  background-color: $tooltip-color;
-  color: $btn-txt-color;
+  background-color: $tooltip;
+  color: $white;
   font-size: 0.75rem;
   max-width: 12.5rem;
   border-radius: $border-radius;
@@ -67,7 +68,7 @@ $border-radius: 0.1563rem;
   height: 0;
   border-left: 0.375rem solid transparent;
   border-right: 0.375rem solid transparent;
-  border-top: 0.375rem solid $tooltip-color;
+  border-top: 0.375rem solid $tooltip;
 }
 .tooltip-icon {
   background: url(../../assets/icons/Info.svg) no-repeat center -0.3125rem;

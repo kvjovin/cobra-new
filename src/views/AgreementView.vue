@@ -158,20 +158,20 @@ export default defineComponent({
 
   .agreement-header {
     background: transparent
-      linear-gradient(281deg, $primary 0%, #0091bf 52%, $primary-txt-color 100%)
-      0% 0% no-repeat padding-box;
+      linear-gradient(281deg, $primary 0%, #0091bf 52%, $primary-blue 100%) 0%
+      0% no-repeat padding-box;
     padding: 1.375rem 2.5rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     .agreement-title {
       font-size: 1.875rem;
-      color: $btn-txt-color;
+      color: $white;
       font-weight: 700;
       text-align: center;
     }
     .print-btn {
-      color: $btn-txt-color;
+      color: $white;
       font-weight: 600;
       text-transform: uppercase;
       font-size: 1.125rem;
@@ -192,11 +192,11 @@ export default defineComponent({
       font-size: 1rem;
       letter-spacing: 0.0088rem;
       margin-bottom: 0.4375rem;
-      color: $agr-color;
+      color: $checkbox-default;
     }
 
     .agreement-content {
-      color: $agr-color;
+      color: $checkbox-default;
       font-weight: 500;
       font-size: 1rem;
       line-height: 2.1875rem;
@@ -207,7 +207,7 @@ export default defineComponent({
     box-shadow: 0rem -0.125rem 0.375rem #00000029;
     position: fixed;
     bottom: 0;
-    background: $btn-txt-color;
+    background: $white;
     width: 100%;
 
     .agreement-footer-container {
@@ -227,13 +227,13 @@ export default defineComponent({
           --bs-border-width: 0.125rem;
         }
         .form-check-input:checked {
-          background-color: $check-color;
-          border-color: $check-color;
+          background-color: $checkbox-selected;
+          border-color: $checkbox-selected;
         }
 
         label.agreement-label {
           font-weight: 600;
-          color: $the-default-color;
+          color: $the-default;
         }
       }
 
